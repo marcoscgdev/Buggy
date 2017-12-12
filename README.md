@@ -41,7 +41,7 @@ public class MyApplication extends Application {
     public void onCreate() {
         super.onCreate();
         Buggy.init(this)
-                .withEmail("marcoscgdev@gmail.com") // Your email
+                .withEmail("user@example.com") // Your email
                 .withSubject("Bug report for " + getResources().getString(R.string.app_name)) // Your subject
                 .start();
     }
