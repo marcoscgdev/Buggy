@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Buggy</string>
+    <string name="buggy_dialog_message">There was an error in the application. Do you want to report it?</string>
+</resources>
