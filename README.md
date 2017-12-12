@@ -5,7 +5,7 @@ A very simple crash dialog for Android that allows the user to send a report.
 
 ## Screenshots
 
-<img src="https://raw.githubusercontent.com/marcoscgdev/Buggy/master/device-2017-12-12-180746.png" width="350">
+<img src="https://raw.githubusercontent.com/marcoscgdev/Buggy/master/device-2017-12-12-180941.png" width="350">
 
 ---
 
