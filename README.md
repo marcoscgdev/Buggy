@@ -43,6 +43,12 @@ public class MyApplication extends Application {
 }
 ```
 
+#### Custom dialog strings (just override it):
+
+```xml
+<string name="buggy_dialog_message">There was an error in the application. Do you want to report it?</string>
+```
+
 ---
 >See the *sample project* to clarify any queries you may have.
 
