@@ -27,7 +27,7 @@ allprojects {
 Now add the dependency to your app build.gradle file:
 
 ```
-compile 'com.github.marcoscgdev:Buggy:1.0.0'
+implementation 'com.github.marcoscgdev:Buggy:1.0.1'
 ```
 
 ### Setting up the dialog
