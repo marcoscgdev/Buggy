@@ -1,6 +1,9 @@
 package com.marcoscg.buggy;
 
+import android.app.AlarmManager;
 import android.app.Application;
+import android.app.PendingIntent;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
@@ -21,7 +24,7 @@ public class Buggy implements Thread.UncaughtExceptionHandler {
     private Thread.UncaughtExceptionHandler mDefaultHandler;
     private StringBuilder report;
     private Application application;
-    private String email="", subject="";
+    private String email = "", subject = "";
 
     private String INTENT_EXTRA_SUBJECT = "CRASH_ERROR_SUBJECT";
     private String INTENT_EXTRA_EMAIL = "CRASH_ERROR_EMAIL";
@@ -63,15 +66,24 @@ public class Buggy implements Thread.UncaughtExceptionHandler {
         report.append("\n\nError information:\n\n");
         collectStackInfo(ex, report);
 
-        Intent intent = new Intent(application, BuggyActivity.class);
-        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        Intent intent = new Intent(application.getApplicationContext(), BuggyActivity.class);
         intent.putExtra(INTENT_EXTRA_EMAIL, email);
         intent.putExtra(INTENT_EXTRA_SUBJECT, subject);
         intent.putExtra(INTENT_EXTRA_INFO, report.toString());
-        application.startActivity(intent);
+        // here I do logging of exception to a db
+        PendingIntent myActivity = PendingIntent.getActivity(application.getApplicationContext(),
+                192837, intent,
+                PendingIntent.FLAG_ONE_SHOT);
 
-        android.os.Process.killProcess(android.os.Process.myPid());
-        System.exit(0);
+        AlarmManager alarmManager;
+        alarmManager = (AlarmManager) application.getSystemService(Context.ALARM_SERVICE);
+        if (alarmManager!=null)
+            alarmManager.set(AlarmManager.ELAPSED_REALTIME_WAKEUP,
+                    0, myActivity);
+
+        System.exit(2);
+
+        mDefaultHandler.uncaughtException(thread, ex);
     }
 
     private void collectStackInfo(Throwable exception, StringBuilder report) {

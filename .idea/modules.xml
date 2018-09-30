@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/BuggySample.iml" filepath="$PROJECT_DIR$/BuggySample.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Buggy.iml" filepath="$PROJECT_DIR$/Buggy.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/buggy/buggy.iml" filepath="$PROJECT_DIR$/buggy/buggy.iml" />
     </modules>
